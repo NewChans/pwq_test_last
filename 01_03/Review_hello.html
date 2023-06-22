@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+        // 함수 기본 표현
+        // function 함수명(매개변수)
+        function fnSum(N1,N2){
+            // 함수 선언식
+            return N1 + N2;
+        }
+        function fnSayHello(){
+            alert('안녕하세요!!!');
+        }
+       // fnSayHello();
+        console.log(fnSum(3,5));
+
+        const fnMinusNumbers = function(pN1,pN2){ 
+            // 함수 표현식 함수명 X 
+            return pN1 - pN2;
+        }
+
+        console.log(fnMinusNumbers(4,9));
+        
+        //호이스팅 (hoisting) : 위에다 선언해주는 도구 -> 함수 선언식만 가능
+        fnHi();
+        function fnHi(){
+            console.log('안녕!HI!');
+        }
+       // fnHi2();
+        const fnHi2 = function(){
+            console.log('안녕!2 HI2!');
+        }
+        fnHi2();
+
+
+    </script>
+</head>
+
+<body>
+    <h1>안녕하세여~~</h1>
+    <button onclick = "fnSayHello()">
+    눌러보시게!</button>
+    
+    <!-- <script>
+        function fnSayHello(){
+            alert('안녕하세요!!!');
+        }
+    </script> -->
+</body>
+</html>
