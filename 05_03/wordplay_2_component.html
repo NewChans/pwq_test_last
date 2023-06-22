@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>끝말잇시</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('wordplay2',{
+            data: function(){
+                return{
+                word: '한국',
+                value: '',
+                result: ''
+                }
+            }
+            ,
+            methods:{
+            onSubmitform: function(e){
+                    e.preventDefault();
+                    if(this.word[this.word.length-1]==this.value[0]){
+                        this.result='정답';
+                        this.word= this.value;
+                        this.value ='';
+                        this.$ref.answer.focus();
+                    }else{
+                        this.result='오답';
+                        this.value ='';
+                        this.$ref.answer.focus();
+                    }
+                }
+            },
+            template:
+
+            `
+            <div>
+            <div>{{word}}</div>
+
+            <form v-on:submit="onSubmitform">
+                <input type="text" ref="answer" v-model="value">
+                <button type="submit">입력!</button>
+            </form>
+
+            <div>{{result}}</div>
+            </div>`
+        })
+    </script>
+
+</head>
+<body>
+    <div id="root">
+
+        <wordplay2></wordplay2>
+        <wordplay2></wordplay2>
+
+    </div>
+
+    <script>
+        new Vue({
+            el:'#root',
+            data: {
+                
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

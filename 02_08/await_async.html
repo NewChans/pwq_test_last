@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick ="
+        fnDoAsyncFunc()
+        
+        
+        ">async ,awail: 상품 배송 시작!</button>
+    
+    <script>
+        async function fnDoAsyncFunc(){
+            console.log(await fnProductReady(1,2000));
+            console.log(await fnProductReady(2,1000));
+            console.log(await fnProductReady(3,500));
+        }
+        function fnProductReady(n,time){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    console.log(n);
+                    resolve('상품 성공적 배송!');
+                },time)
+            })
+        }
+    </script>
+</body>
+</html>

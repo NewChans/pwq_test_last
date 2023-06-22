@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .fruit_style{
+            border: 5px dotted #ccc;
+            background-color: white;
+            padding-left: 1em;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1>{{sTitle}}</h1>
+        <!-- 컴포넌트 작성 -->
+        <favorite-fruits></favorite-fruits>
+        <favorite-fruits></favorite-fruits>
+
+    </div>
+    <script>
+       
+
+        Vue.component('favorite-fruits',{
+            data: function(){
+                return{
+                    aFruits:[
+                        {aFruits_name:'사과'},
+                        {aFruits_name:'오렌지'},
+                        {aFruits_name:'수박'},
+                        {aFruits_name:'오이' ,color:'green'}
+                    ]
+                }
+            },
+            template:
+            ` <div>
+                <div v-for="item in aFruits" class='fruit_style'>
+                    <p>  좋아하는 과일: {{item.aFruits_name}}</p>
+                    </div>
+                    <br>
+                    </div>`
+
+        })
+        new Vue({
+            el:'#main',
+            data: {
+                sTitle: '안녕하세요'
+            }
+
+        })
+    </script>
+</body>
+</html>

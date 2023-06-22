@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function timer(time){
+            return new Promise(function(resolve){
+                setTimeout(()=>{
+                    console.log(time);
+                    resolve(time);
+                },time)
+            })
+        }
+
+        // timer(1000)
+        // .then(function(time){
+        //     console.log(time)
+        // });
+
+        // timer(1000)
+        // .then((time)=> console.log(time));
+
+        // await 연산자 사용하기 위해서 async함수 안에 작성
+            async function run(){
+            console.log('start');
+                // var / const
+            var time = await timer(1000);
+            console.log('time: '+time);
+
+            time = await timer(time+1000);
+            console.log('time: '+time);
+
+            time = await timer(time+1000);
+            console.log('time: '+time);
+                
+            console.log('end');
+            return time;
+            }
+            async function run2(){
+            console.log('parent start');
+            var time = await run();
+            console.log('time: '+time);
+
+            console.log('parent end');
+            }
+
+            console.log('parent parent start');
+            run2().then(()=>{
+            console.log('parent parent end');
+
+            });
+
+            run2();
+        
+    </script>
+    
+</body>
+</html>

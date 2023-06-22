@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>s
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function RequestData(){
+        //     return Math.random()>0.5;
+        // }
+        // const oProductReady = new Promise(function(fnResolve,fnReject){
+        //     let bStatus = RequestData();
+        //     if(bStatus){
+        //         fnResolve('상품이 성공적으로 배송되었습니다! ');
+        //     }else{
+        //         fnReject('죄송합니다. 상품이 아직 준비되지 못했습니다!');
+        //     }
+        
+        // });
+        // oProductReady
+        // .then(function(nResult){
+        //     console.log(pResult); // fnResolve  함수
+        // }, function(pErrMsg){
+        //     console.log(pErrMsg);   // fnReject 함수 
+        // });
+    </script>
+</head>
+<body>
+    <button onclick = "
+    fnProductReady(1,2000)
+    .then(pResult=>{
+        console.log(pResult);
+        return fnProductReady(2,1000);
+    })
+    .then(pResult2=>{
+        console.log(pResult2);
+        return fnProductReady(3,500);
+    })
+    .then(pResult3=>{
+        console.log(pResult3);
+        
+    });
+
+        // console.log('Promise 시작');
+        // let bStatus = Math.random()>0.5;
+        // fnCreatePromise(bStatus)
+        // .then(pResult=>console.log(pResult)) // 참
+        // .catch(pErrmsg=>console.error(pErrmsg)); // 오류
+        // console.log('Promise 종료');
+        ">
+        상품 배송 시작!
+    </button>
+
+    <script>
+        function fnProductReady(pNum,pTime){
+            return new Promise(fnResolve=>{
+                setTimeout(()=>{
+                    console.log(pNum);
+                    fnResolve('상품이 성공적');
+                },pTime);
+            })
+        }
+    </script>
+</body>
+</html>

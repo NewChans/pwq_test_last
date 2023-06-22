@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰</title>
+     <!-- 뷰 CDN에 연결  추가(/dist/vue.js)-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .blue_style{color:blue;}
+        .red_style{color:red}
+    </style>
+
+</head>
+<body>
+
+    <div id="main">
+        <!-- v-bind 생략 가능 -->
+        <h1 :class="sColorName+'_style'">안녕하세요</h1>
+        <input :value="sDate"><br>
+        {{person.name}}의 올해 나이는 {{person.age}}입니다.
+        <hr>
+
+        <h2>{{sMsg}}</h2>
+        <input v-model:value="sMsg">
+    </div>
+    <script>
+        new Vue({
+            el: '#main',
+
+            data:{
+                person:{
+                    name:'이세찬',
+                    age: 24
+                },
+                // sTitle : '안녕하세요!',
+                sColorName : 'blue',
+                sDate : '올해 연도 : '+ new Date().getFullYear(),
+
+                sMsg: '안녕하세요!'
+            },
+
+
+            methods:{
+
+            }
+        })
+    </script>
+
+</body>
+</html>

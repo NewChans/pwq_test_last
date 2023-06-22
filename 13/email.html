@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <form>
+        <h1>회원가입</h1>
+        <div>이 메 일 : <input type="email" id="signupEmail" /> </div>
+        <div>패스워드 : <input type="password" id="signupPassword" /> </div>
+        <button type="submit" id="signupSubmit">회원가입하기</button>
+
+    </form>
+    <form>
+        <h1>로그인</h1>
+        <div>이 메 일 : <input type="email" id="signinEmail" /> </div>
+        <div>패스워드 : <input type="password" id="signinPassword" /> </div>
+        <button type="submit" id="signinSubmit">로그인하기</button>
+    </form>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA7LpuJb4k1zo5w0zfpxqdjjtdypRYTt8A",
+            authDomain: "pwa-02-71956.firebaseapp.com",
+            projectId: "pwa-02-71956",
+            storageBucket: "pwa-02-71956.appspot.com",
+            messagingSenderId: "1064199758212",
+            appId: "1:1064199758212:web:6b4460906740f65d267dd1",
+            measurementId: "G-PNYNX4R9J7"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+        const auth = getAuth();
+
+        document.getElementById('signupSubmit').addEventListener('click', (event) => {
+            event.preventDefault();
+            const signupEmail = document.getElementById('signupEmail').value;
+            const signupPassword = document.getElementById('signupPassword').value;
+            createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
+                .then((userCredential) => {  // 정상 실행
+                    // Signed in
+                    console.log('회원가입 성공');
+                    const user = userCredential.user;
+                    // ...
+                })
+                .catch((error) => {
+                    console.log('회원가입 실패');
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                });
+
+
+        }
+        );
+
+        document.getElementById('signinSubmit').addEventListener('click', (event) => {
+            event.preventDefault();
+            const signinEmail = document.getElementById('signinEmail').value;
+            const signinPassword = document.getElementById('signinPassword').value;
+
+            signInWithEmailAndPassword(auth, signinEmail, signinPassword)
+            .then((userCredential) => {
+                // Signed in
+                console.log(userCredential);
+                console.log('로그인 성공');
+                const user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log('로그인 실패');
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+        })
+
+       
+
+    </script>
+</body>
+
+</html>

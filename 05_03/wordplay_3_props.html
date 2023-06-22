@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>끝말잇시</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('wordplay2',{
+            data: function(){
+                return{
+                    // 카멜표기법(표기한 모습 마치 낙타)
+                    // start-word ===> startWord
+                word: this.startWord,
+                value: '',
+                result: ''
+                }
+            },
+            props:['start-word']
+            ,
+            methods:{
+            onSubmitform: function(){
+                    
+                    if(this.word[this.word.length-1]==this.value[0]){
+                        this.result='정답!!!';
+                        this.word= this.value;
+                        this.value ='';
+                        this.$ref.answer.focus();
+                    }else{
+                        this.result='오답!!!';
+                        this.value ='';
+                        this.$ref.answer.focus();
+                    }
+                }
+            },
+            template:
+
+            `
+            <div>
+            <div>{{word}}</div>
+
+            <form v-on:submit.prevent="onSubmitform">
+                <input type="text" ref="answer" v-model="value">
+                <button type="submit">입력!</button>
+            </form>
+
+            <div>{{result}}</div>
+            </div>`
+        })
+    </script>
+
+</head>
+<body>
+    <div id="root">
+
+        <wordplay2 start-word="한국"></wordplay2>
+        <br>
+        <wordplay2 start-word="아이티"></wordplay2>
+        <br>
+        <wordplay2 start-word="학교"></wordplay2>
+
+    </div>
+
+    <script>
+        new Vue({
+            el:'#root',
+            data: {
+                
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

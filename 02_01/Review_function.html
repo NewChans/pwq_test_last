@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick = "console.log(fnSayHi())"id="clickme">
+        눌러줘요!
+    </button><br>
+    <button onclick = "console.log(fnPlusNum(3,5))"id="plus">
+    3+5 = ?</button><br>
+    <button onclick = "console.log(fnMinusNum(3,6))"class="minus">
+    3-6 = ?</button>
+    
+    <script>
+        // 변수선언
+        // var 함수 스코프 
+        // let const  블록 스코프 
+        let hosu =3;
+        if(true){
+            let hosu = 5;
+            console.log(hosu);
+        }
+        console.log(hosu);
+
+        let apple =10;
+        {
+            let apple =3;
+            // 같은 이름으로 중복 선언 X let apple =4;
+            apple = apple +3;
+            console.log(apple);
+        }
+        console.log(apple);
+        
+
+        function fnSayHi(){
+            document.querySelector('#clickme').innerHTML = '안녕하이';
+        }
+        function fnPlusNum(n1,n2){
+            document.querySelector('#plus').innerHTML = n1 + n2;
+            // return n1 + n2
+        }
+        function fnMinusNum(n1,n2){
+            document.querySelector('.minus').innerHTML = n1 - n2;
+            // return n1 - n2
+        }
+    </script>
+
+    
+</body>
+</html>

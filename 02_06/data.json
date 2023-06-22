@@ -1,0 +1,7 @@
+{
+    "items":[
+        {"name":"홍길동","age":35,"email":"iejff1@fjieow.com"},
+        {"name":"홍길동1","age":23,"email":"iejf22@fjieow.com"},
+        {"name":"홍길동2","age":345,"email":"iejf333@fjieow.com"}
+    ]
+}

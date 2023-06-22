@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰</title>
+     <!-- 뷰 CDN에 연결  추가(/dist/vue.js)-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .blue_style{color:blue;}
+        .red_style{color:red}
+        .green_style{color:green;}
+        .yellow_style{color:yellow;}
+        .purple_style{color:purple;}
+    </style>
+
+</head>
+<body>
+
+    <div id="main">
+        <!-- v-bind 생략 가능 -->
+        <h1 :class="sColorName+'_style'">안녕하세요</h1>
+        <input :value="sDate"><br>
+        {{person.name}}의 올해 나이는 {{person.age}}입니다.
+        <hr>
+
+        <h2>{{sMsg}}</h2>
+        <input v-model:value="sMsg">
+        <hr>
+
+        <h1>{{bFlag}}</h1>
+        <p v-if="bFlag==true">앞면</p>
+            <p v-else>뒷면 </p>
+        <hr>
+            <!-- <p>{{grade}}</p> -->
+            <div v-if="grade=='A'">90점 이상임</div>
+            <div v-else-if="grade=='B'">80점 이상임</div>
+            <div v-else> 70점 이상임</div>
+        <hr>
+
+        <h1> 좋아하는 과일은? </h1>
+        <ol>
+            <li v-for="(item, index) in fruits">
+                {{index}} ==> {{item.sFruitName}}의 색은 {{item.color}}입니다.
+            </li>
+        </ol>
+        <ul>
+            <li v-for="(value, index) in object">
+                <!-- {{value.title}}의 저자는 {{value.author}}이고 출판사는 {{value.publisher}}입니다.
+                 -->
+                 {{index}}==>{{value.title}} , {{value.author}}, {{value.publisher}}
+            </li>
+        </ul>
+
+      
+    </div>
+    <script>
+        const app= new Vue({
+            el: '#main',
+
+            data:{
+                person:{
+                    name:'이세찬',
+                    age: 24
+                },
+                // sTitle : '안녕하세요!',
+                sColorName : 'blue',
+                sDate : '올해 연도 : '+ new Date().getFullYear(),
+
+                sMsg: '안녕하세요!',
+
+                bFlag : Math.random()>0.5,
+
+                grade : 'B',
+
+                fruits :[
+                    {sFruitName:'사과', color:'빨강'},
+                    {sFruitName:'체리', color:"핑크"},
+                    {sFruitName:'포도', color:"보라"},
+                    {sFruitName:'블루베리', color:"퍼플"}
+                ],
+                object :[
+                   { title : '프로그레시브웹앱',
+                    author : '김응석',
+                    publisher : '이지퍼블리싱'},
+                    { title : '아무거나',
+                    author : '아무개',
+                    publisher : '퍼블리싱'}
+            ]
+            },
+
+
+            methods:{
+
+            }
+        })
+
+        setInterval(function(){
+            let colors=['red','blue','yellow','purple','green'];
+            let randindex = math.floor(math.random()*colors.length);
+            app.sColorName = colors[randindex];
+        },1000);
+    </script>
+
+</body>
+</html>

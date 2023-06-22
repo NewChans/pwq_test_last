@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <button onclick="console.log(fnSayHello())"id="clickme">
+    눌러 주세요!
+    </button><br />
+    <button onclick="console.log(fnPlusNumber(3,5))"id="plus">
+    3+5 = ?
+    </button>
+    <button onclick="console.log(fnMinusNumber(3,5))"class="minus">
+    3-5 = ?
+    </button>
+
+    <script>
+        // 변수 선언 var => let,const
+        let apple =3;
+        if(true){
+            let apple =5;
+          // 같으 이름으로 중복 선언 허용 X  let apple = 3; 
+            console.log(apple);
+        }
+        console.log(apple)
+
+        {
+            let Apple =3;
+            Apple = Apple +3;
+            console.log(Apple);
+        }
+        
+        // # -> id 명 참조 ,찾기 후 선택 / 요소 선택후 반환 
+        // . -> class 명 참조
+        //innerHTML 객체 안에 삽입
+        // document 객체 (html 전체) querySelector() 매개변수로 id 선택자 지정  
+        function fnSayHello(){
+            document.querySelector('#clickme').innerHTML = '안녕하세요';
+
+        }
+        function fnPlusNumber(pNum1,pNum2){
+            document.querySelector('#plus').innerHTML = pNum1+pNum2;
+            // return pNum1+pNum2;
+        }
+        function fnMinusNumber(pNum1,pNum2){
+            document.querySelector('.minus').innerHTML = pNum1-pNum2;
+            // return pNum1-pNum2;
+        }
+    </script>
+</body>
+</html>

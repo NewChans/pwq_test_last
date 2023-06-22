@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    // 함수 선언식(hoisting 가능)
+        // function fnPlusNumbers(pNum1, pNum2){
+        //     return pNum1 + pNum2;
+        // }
+    // 함수 표현식          
+        // const fnPlusNumbers = function(pNum1,pNum2){
+        //     return pNum1 + pNum2;
+        // }
+
+    // 함수 화살표활용1 _ 함수 표현식에서 function 삭제 -> (매개변수..)뒤에 => 추가     
+        // const fnPlusNumbers = (pNum1,pNum2) => {
+        //         return pNum1 + pNum2;
+        //     }
+
+    // 함수 화살표활용2 _ return 생략 가능     
+        //  const fnPlusNumbers = (pNum1,pNum2) => pNum1 + pNum2;
+        
+    // 함수 화살표활용3 _ (매개변수..)가 하나일때, () 생략가능  
+        // const fnPlusNumbers = pNum1 => pNum1 +1;
+    
+    // 함수 화살표활용4 _ (매개변수..)가 없을때, 반드시 ()
+        //  const fnPlusNumbers = () => "안녕하세요?";
+                
+
+        // console.log(fnPlusNumbers());
+    const fnPlusNumber1 = function(pNum1 , pNum2) { return pNum1 + pNum2;}
+    const fnPlusNumber2 = (pNum1 , pNum2) =>{return pNum1 + pNum2;}
+    const fnPlusNumber3 = (pNum1 , pNum2) => pNum1 + pNum2;
+    const fnPlusNumber4 = pNum1 => pNum1 + 1;
+    const fnSayHello = () =>"안녕하세요!"
+    </script>
+</head>
+<body>
+    <!-- 클릭하면 호출해라 -->
+    <button onclick = "
+        console.log(fnSayHello());
+        console.log('1+2 = ', fnPlusNumber1(1,2));
+        console.log('2+3 = ', fnPlusNumber2(2,3));
+        console.log('3+4 = ', fnPlusNumber3(2,3));
+        console.log('4+1 = ', fnPlusNumber4(4));
+        "id = 'checkme'>화살표 함수 실행!!</button>
+</body>
+</html>
